@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="first_name">First name: %1$s</string>
+    <string name="last_name">Last name: %1$s</string>
+    <string name="phone_number">Phone number: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
