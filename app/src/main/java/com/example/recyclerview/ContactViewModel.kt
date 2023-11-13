@@ -1,6 +1,7 @@
 package com.example.recyclerview
 
 import android.util.Log
+import androidx.core.util.Predicate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,11 +47,16 @@ class ContactViewModel : ViewModel() {
     }
 
     fun deleteContacts(listContacts : List<Int>){
-        val list = _contacts.value
-        listContacts.forEach{
-            list?.removeAt(it)
+        val list = _contacts.value!!
+        val newList = mutableListOf<Contact>()
+
+        for (i in list){
+            if (i.id !in listContacts) {
+             newList.add(i)
+            }
         }
-        _contacts.postValue(list)
+
+        _contacts.postValue(newList)
     }
 
     fun changeModeClick(){

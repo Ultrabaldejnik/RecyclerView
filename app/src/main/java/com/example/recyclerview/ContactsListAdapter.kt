@@ -5,11 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.CompoundButton
-import android.widget.RadioGroup
-import android.widget.RadioGroup.OnCheckedChangeListener
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -55,7 +50,8 @@ class ContactsListAdapter(private val context: Context) :
             true -> {
                 holder.itemView.setOnClickListener {
                     holder.binding.chekedImg.isChecked = !holder.binding.chekedImg.isChecked
-                    updateListForDelete(position)
+                    updateListForDelete(contact.id)
+                    Log.d("SelectedItems", selectedContact.toString())
                 }
             }
         }
@@ -63,11 +59,11 @@ class ContactsListAdapter(private val context: Context) :
 
     fun getListForDelete(): List<Int> = selectedContact
 
-    private fun updateListForDelete(position: Int) {
-        if (position in selectedContact) {
-            selectedContact.remove(position)
+    private fun updateListForDelete(id: Int) {
+        if (id in selectedContact) {
+            selectedContact.remove(id)
         } else {
-            selectedContact.add(position)
+            selectedContact.add(id)
         }
     }
 
